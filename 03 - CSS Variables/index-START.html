@@ -42,13 +42,11 @@
         --spacing: 10px;
         --blur: 10px;
       }
-
       img {
         padding: var(--spacing);
         background: var(--base);
         filter: blur(var(--blur));
       }
-
       .hl {
         color: var(--base);
       }
@@ -69,7 +67,6 @@
       .controls {
         margin-bottom: 50px;
       }
-
       input {
         width: 100px;
       }
@@ -77,7 +74,6 @@
 
     <script>
       const inputs = document.querySelectorAll(".controls input");
-
       function handleUpdate() {
         const suffix = this.dataset.sizing || "";
         document.documentElement.style.setProperty(

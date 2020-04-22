@@ -1,12 +1,13 @@
 const hero = document.querySelector(".hero");
 const text = hero.querySelector("h1");
-const walk = 100;
+const walk = 500; // 500px
 
 function shadow(e) {
   // const width = hero.offsetWidth;
   // const height = hero.offsetHeight
   //hotshot =>
   const { offsetWidth: width, offsetHeight: height } = hero;
+  // assigning x and y on the event value.
   let { offsetX: x, offsetY: y } = e;
 
   if (this !== e.target) {
@@ -15,13 +16,15 @@ function shadow(e) {
   }
   const xWalk = Math.round((x / width) * walk - walk / 2);
   const yWalk = Math.round((y / height) * walk - walk / 2);
-  //   console.log(x, y);
+  //seeing where the mouse position is on the page.
+  console.log(xWalk, yWalk);
 
   text.style.textShadow = `
   ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
   ${xWalk * -1}px ${yWalk}px 0 rgba(0, 255, 255, 0.7),
   ${yWalk}px ${xWalk * -1}px 0 rgba(0, 255, 0, 0.7),
-  ${yWalk * -1}px ${xWalk}px 0 rgba(0, 255, 255, 0.7), `;
+  ${yWalk * -1}px ${xWalk}px 0 rgba(0, 255, 255, 0.7)
+   `;
 }
 
 hero.addEventListener("mousemove", shadow);

@@ -22,10 +22,10 @@ const hours = Math.floor(secondsLeft / 3600);
 // being evenly distributed. so after we chunk it into hours, this will be
 // how many seconds left we have.
 secondsLeft = secondsLeft % 3600;
-
+// back again for the mins and mod the leftover seconds.
 const mins = Math.floor(secondsLeft / 3600);
 secondsLeft = secondsLeft % 3600;
-
+// seeing how many hours, mins, seconds we have total.
 console.log(hours, mins, secondsLeft);
 
 // console.log(timeNodes);

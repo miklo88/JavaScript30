@@ -37,11 +37,15 @@ function strip(bandName) {
 }
 // HOT-SHOT look at that cleaned up arrow function.
 const sortedBands = bands.sort((a, b) => (strip(a) > strip(b) ? 1 : -1));
-// setting the sorted array to the browser.
-document.querySelector("#bands").innerHTML = sortedBands
-  .map((band) => `<li>${band}</li>`)
-  .join("");
+// taking the element bands and setting the innerHTML to be sortedBands
+document.querySelector("#bands").innerHTML =
+  // mapping over the sortedBands function
+  sortedBands
+    .map((band) => `<li>${band}</li>`)
+    // Join is here to take away the commas, to make it into one big string, instead of multiple strings that would render the commas.
+    .join("");
 
+//////// old logic syntax ////////////
 // const sortedBands = bands.sort(function (a, b) {
 //   if (strip(a) > strip(b)) {
 //     return 1;

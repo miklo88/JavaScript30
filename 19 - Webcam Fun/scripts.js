@@ -6,8 +6,8 @@ const snap = document.querySelector(".snap");
 
 function getVideo() {
   /// get a users video sorted out first
-  navigator.mediaDevices;
   navigator.mediaDevices
+
     .getUserMedia({ video: true, audio: false })
     .then((localMediaStream) => {
       console.log(localMediaStream);
@@ -28,18 +28,20 @@ function paintToCanvas() {
 
   return setInterval(() => {
     ctx.drawImage(video, 0, 0, width, height);
-    //take the pixels out
+    ////////////take the pixels out
     let pixels = ctx.getImageData(0, 0, width, height);
 
-    // messing with the pixels
+    //////////// messing with the pixels
     // pixels = redEffect(pixels);
 
-    // another effect that splits multiple colored images across the screen
+    //////////// another effect that splits multiple colored images across the screen
     // pixels = rgbSplit(pixels);
+    // /////// contex give this a slowed down slow motion appearance.
     // ctx.globalAlpha = 0.2;
 
     pixels = greenScreen(pixels);
-    //then putting them back
+    // //then putting them back
+    //// uncomment this and your filters will appear
     ctx.putImageData(pixels, 0, 0);
     // console.log(pixels);
     // debugger;
@@ -57,25 +59,24 @@ function takePhoto() {
   link.href = data;
   link.setAttribute("download", "handsome");
   link.innerHTML = `<img src="${data}" alt="Guapo chico" />`;
-  strip.insertBefore(link, strip.firsChild);
+  strip.insertBefore(link, strip.firstChild);
   // console.log(data);
 }
-// cool red effect being run through a for loopies
+// cool red color overlay being run through a for loopies
 function redEffect(pixels) {
   for (let i = 0; i < pixels.data.length; i += 4) {
-    pixels[i + 0] = pixels.data[i + 0] + 100; // Rojo
-    pixels[i + 1] = pixels.data[i + 1] - 50; // Verde
-    pixels[i + 2] = pixels.data[i + 2] * 0.5; //Azul
+    pixels.data[i + 0] = pixels.data[i + 0] + 200; // Rojo
+    pixels.data[i + 1] = pixels.data[i + 1] - 50; // Verde
+    pixels.data[i + 2] = pixels.data[i + 2] * 0.5; //Azul
   }
   return pixels;
 }
-
 /// splitting the colors apart
-function rgbSplit(pixles) {
+function rgbSplit(pixels) {
   for (let i = 0; i < pixels.data.length; i += 4) {
-    pixels[i - 150] = pixels.data[i + 0]; // Rojo
-    pixels[i + 100] = pixels.data[i + 1]; // Verde
-    pixels[i - 150] = pixels.data[i + 2]; //Azul
+    pixels.data[i - 150] = pixels.data[i + 0]; // Rojo
+    pixels.data[i + 100] = pixels.data[i + 1]; // Verde
+    pixels.data[i - 150] = pixels.data[i + 2]; //Azul
   }
   return pixels;
 }
@@ -83,7 +84,7 @@ function rgbSplit(pixles) {
 function greenScreen(pixels) {
   const levels = {};
 
-  document.querySelectorAll(".rgb").forEach((input) => {
+  document.querySelectorAll(".rgb input").forEach((input) => {
     levels[input.name] = input.value;
   });
 
@@ -101,6 +102,7 @@ function greenScreen(pixels) {
       green <= levels.gmax &&
       blue <= levels.bmax
     ) {
+      //taking it out.
       pixels.data[i + 3] = 0;
     }
   }

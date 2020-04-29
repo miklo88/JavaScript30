@@ -14,7 +14,7 @@ function populateVoices() {
     .filter((voice) => voice.lang.includes("en"))
     .map(
       (voice) =>
-        `<option value=${voice.name}">${voice.name} (${voice.lang})</option>`
+        `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
     )
     .join("");
 }

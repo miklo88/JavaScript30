@@ -15,8 +15,8 @@ function logText(e) {
 divs.forEach((div) =>
   div.addEventListener("click", logText, {
     capture: false,
-    //unbinding itself
-    // once: true,
+    //unbinding itself. one click to rule them all
+    once: true,
   })
 );
 // unbinding itself {once: true} and then wont listen for any

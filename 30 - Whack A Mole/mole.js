@@ -47,7 +47,7 @@ function startGame() {
 function bonk(e) {
   if (!e.isTrusted) return; // to stop cheaters! HA
   score++;
-  this.classListe.remove("up");
+  this.classList.remove("up");
   scoreBoard.textContent = score;
   console.log(e);
 }

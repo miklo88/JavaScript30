@@ -48,7 +48,7 @@ function displayEndTime(timestamp) {
     minutes < 10 ? "0" : ""
   }${minutes}`;
 }
-
+// pre loaded display buttons with timers on the page.
 function startTimer() {
   const seconds = parseInt(this.dataset.time);
   timer(seconds);

@@ -24,7 +24,7 @@ function timer(seconds) {
     displayTimeLeft(secondsLeft);
   }, 1000);
 }
-
+/// function that will display on the screen how much time is left.
 function displayTimeLeft(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainderSeconds = seconds % 60;
@@ -38,7 +38,7 @@ function displayTimeLeft(seconds) {
   console.log({ minutes, remainderSeconds });
 }
 
-// end time stamp
+// end time stamp. at what time the timer runs out.
 function displayEndTime(timestamp) {
   const end = new Date(timestamp);
   const hour = end.getHours();
@@ -51,7 +51,7 @@ function displayEndTime(timestamp) {
 
 function startTimer() {
   const seconds = parseInt(this.dataset.time);
-  console.log(seconds);
+  timer(seconds);
 }
 
 buttons.forEach((button) => button.addEventListener("click", startTimer));

@@ -35,11 +35,13 @@ function peep() {
   console.log(time, hole);
 }
 
+// to start the game, invoking moles
 function startGame() {
   scoreBoard.textContent = 0;
   timeUp = false;
   score = 0;
   peep();
+  // each game/round lasts 10 seconds
   setTimeout(() => (timeUp = true), 10000);
 }
 
